@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed;
+    public float moveSpeed = 5f;
     private Rigidbody2D rb;
     private Vector2 movement;
     void Awake() {
@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void Start()
     {
-        moveSpeed = 5f;
+        
     }
 
     void Update() {
