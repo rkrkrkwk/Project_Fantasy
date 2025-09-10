@@ -13,6 +13,9 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 mousePosition;
     private Vector2 lookDirection;
     private float smoothedAngle;
+    public float getAngle(){
+        return this.angle;
+    }
     void Awake() {
         rb = GetComponent<Rigidbody2D>();
     }
@@ -28,12 +31,12 @@ public class PlayerMovement : MonoBehaviour
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         lookDirection = mousePosition - transform.position;
         angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
-        smoothedAngle = Mathf.LerpAngle(rb.rotation, angle, rotationSpeed * Time.deltaTime);
-        rb.rotation = smoothedAngle;
     }
 
     void FixedUpdate() {
         Vector2 normalizedMovement = movement.normalized;
         rb.MovePosition(rb.position + normalizedMovement * moveSpeed * Time.fixedDeltaTime);
+        smoothedAngle = Mathf.LerpAngle(rb.rotation, angle, rotationSpeed * Time.deltaTime);
+        rb.rotation = smoothedAngle;
     }
 }
