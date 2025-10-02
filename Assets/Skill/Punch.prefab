@@ -161,6 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8df0b33525258742993f3a03b0031a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  watk: 5
   cooltime: 0.3
   damage: 5
   shootspeed: 10

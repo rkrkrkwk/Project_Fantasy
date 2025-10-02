@@ -27,7 +27,7 @@ public class SkillExcutor : MonoBehaviour
                 {
                     position = transform.position;
                     direction = transform.rotation;
-                    Instantiate(skillHolder0, position, direction);
+                    Instantiate(skillHolder0, position, direction).GetComponent<Script>().status = GetComponent<Status>().status;
                     timer0 = skillHolder0.GetComponent<Script>().cooltime;
                 }
             }

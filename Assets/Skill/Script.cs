@@ -6,17 +6,21 @@ using UnityEngine.Video;
 
 public class Script : MonoBehaviour
 {
+    public statStruct status;
+
+    public float watk;
+
     public float cooltime;
     public float damage;
     public float shootspeed;
     public float range;
     private Vector3 position;
-    private Vector3 direction;
     // Start is called before the first frame update
     void Start()
     {
         // 시전 지점
         position = transform.position;
+        damage = status.ATK * watk;
     }
 
     // Update is called once per frame
@@ -36,7 +40,7 @@ public class Script : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            collision.gameObject.GetComponent<Status>().GetDamage(damage);
+            collision.gameObject.GetComponent<Status>().getDamage(damage);
         }
     }
 
