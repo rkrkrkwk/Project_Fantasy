@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public float movespeed = 5f;
+    public float moveSpeed = 5f;
     public Transform playerPos;
     private Vector3 target;
     bool PlayerPosCheck(Transform playerPos)
@@ -22,6 +22,6 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         if (PlayerPosCheck(playerPos)) { target = playerPos.position; }
-        transform.position = Vector3.MoveTowards(transform.position, target, movespeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
     }
 }

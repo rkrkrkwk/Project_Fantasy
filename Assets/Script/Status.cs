@@ -2,40 +2,58 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
+using UnityEngine.UIElements;
 public class Status : MonoBehaviour
 {
-    public statStruct status;
+    public statStruct baseStat = new statStruct(0, 0, 0, 0, 1, 10, 10, 10, 10, 5, 5);
+    public statStruct itemStat = new statStruct();
+    public statStruct status = new statStruct();
+    public Equipment equipment;
+    void Awake()
+    {
+        equipment = gameObject.GetComponent<Equipment>();
+    }
     // Start is called before the first frame update
     void Start()
     {
-        SetStat();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        calcStat();
     }
-    public void SetStat()
+    public void getItemStat()
     {
-        status.MaxHP = status.LV * 10 + status.AddMaxHP;
-        status.MaxMP = status.LV * 10 + status.AddMaxMP;
-        status.ATK = status.LV * 1 + status.AddATK;
-        status.MAT = status.LV * 1 + status.AddMAT;
-        status.HP = status.MaxHP;
-        status.MP = status.MaxMP;
+        Item[] items = equipment.items;
+        statStruct res = new statStruct();
+        for(int i = 0; i < items.Length; i++)
+        {
+            if (items[i] != null)
+            {
+                res = res + items[i].stat;
+            }
+        }
+        itemStat = res;
     }
-    public void LVup()
+
+    public void calcStat()
     {
-        status.LV++;
-        SetStat();
+        getItemStat();
+        status = baseStat + itemStat;
+    }
+
+    public void LVUP()
+    {
+        baseStat.addStat(0,0,0,0,1,10,10,10,10,5,5);
     }
 
     public void getDamage(float damage)
     {
-        
-        status.HP -= damage;
-        if (status.HP <= 0)
+        baseStat.HP -= damage;
+        if (baseStat.HP < 0)
         {
             Destroy(gameObject);
         }

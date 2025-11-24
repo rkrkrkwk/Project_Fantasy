@@ -15,6 +15,7 @@ MonoBehaviour:
   id: 1
   itemName: Sword
   icon: {fileID: 7482667652216324306, guid: 4790ba7ee09e81d48954157f5e102d1b, type: 3}
+  equipmentType: 6
   flavorText: "\uAC80\uC774\uB2E4."
   stat:
     AddMaxHP: 0

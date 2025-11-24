@@ -33,23 +33,17 @@ public class InventoryDisplay : MonoBehaviour
 
     public void DisplayItem()
     {
-        bool ItemEnded = false;
         for (int i = 0; i < gameObject.transform.GetChild(0).transform.childCount; i++)
         {
             for (int j = 0; j < gameObject.transform.GetChild(0).transform.GetChild(i).childCount; j++)
             {
-                if (player.GetComponent<Inventory>().Items.Count > i * 5 + j)
+                if (i * 5 + j < player.GetComponent<Inventory>().Items.Count)
+                    gameObject.transform.GetChild(0).transform.GetChild(i).GetChild(j).GetComponent<ItemHolderControl>().item = player.GetComponent<Inventory>().Items[i * 5 + j];
+                if (i * 5 + j >= player.GetComponent<Inventory>().Items.Count)
                 {
-                    gameObject.transform.GetChild(0).transform.GetChild(i).GetChild(j).GetComponent<UnityEngine.UI.Image>().sprite = player.GetComponent<Inventory>().Items[i * 5 + j].icon;
-                }
-                else
-                {
-                    ItemEnded = true;
-                    Debug.Log(i * 5 + j);
-                    break;
+                    gameObject.transform.GetChild(0).transform.GetChild(i).GetChild(j).GetComponent<ItemHolderControl>().item = null;
                 }
             }
-            if (ItemEnded) break;
         }
     }
 }

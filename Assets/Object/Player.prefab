@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 4086669205790566329}
   - component: {fileID: 5996896929129221372}
   - component: {fileID: 2989363992945857485}
+  - component: {fileID: 6209345365583775775}
+  - component: {fileID: 4903649729876962756}
   - component: {fileID: 140428283115542717}
   m_Layer: 0
   m_Name: Player
@@ -129,7 +131,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &5996896929129221372
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -188,6 +190,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillHolder0: {fileID: 1143836708682642962, guid: 0b9a0d7d69d1cd147a8a0ecee96b7dc2, type: 3}
+--- !u!114 &6209345365583775775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6227499015238777970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7f1e63dd4ff3df46ae3e84a4525d5f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gold: 0
+--- !u!114 &4903649729876962756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6227499015238777970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 987e62da8d5dede4fb70d5adc5aabc47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equippedPart: 0
+  items:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  EquipStats:
+    AddMaxHP: 0
+    AddMaxMP: 0
+    AddATK: 0
+    AddMAT: 0
+    LV: 0
+    MaxHP: 0
+    MaxMP: 0
+    HP: 0
+    MP: 0
+    ATK: 0
+    MAT: 0
 --- !u!114 &140428283115542717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,16 +245,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 139044b16ca5fd242be6d7d05cc2317e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 0
-  MP: 0
-  SP: 0
-  ATK: 0
-  DEF: 0
-  MAT: 0
-  MDF: 0
-  STR: 0
-  CON: 0
-  VIR: 0
-  DEX: 0
-  WIS: 0
-  SPI: 0
+  baseStat:
+    AddMaxHP: 0
+    AddMaxMP: 0
+    AddATK: 0
+    AddMAT: 0
+    LV: 1
+    MaxHP: 10
+    MaxMP: 10
+    HP: 10
+    MP: 10
+    ATK: 5
+    MAT: 5
+  itemStat:
+    AddMaxHP: 0
+    AddMaxMP: 0
+    AddATK: 0
+    AddMAT: 0
+    LV: 0
+    MaxHP: 0
+    MaxMP: 0
+    HP: 0
+    MP: 0
+    ATK: 0
+    MAT: 0
+  status:
+    AddMaxHP: 0
+    AddMaxMP: 0
+    AddATK: 0
+    AddMAT: 0
+    LV: 1
+    MaxHP: 0
+    MaxMP: 0
+    HP: 0
+    MP: 0
+    ATK: 0
+    MAT: 0
+  items: []
