@@ -1,41 +1,55 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using JetBrains.Annotations;
-using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
-{    
-    private List<Item> items = new List<Item>();
-    public int gold = 0;
-
-    public List<Item> Items { get => items; set => items = value; }
-    // Start is called before the first frame update
-    void Start()
+{
+    [SerializeField]
+    private InventoryDisplay inventoryDisplay;
+    public struct itemSlot
     {
-        
+        public int id;
+        public int quantity;
     }
-
-    // Update is called once per frame
-    void Update()
+    private List<itemSlot> invenList = new List<itemSlot>();
+    public IReadOnlyList<itemSlot> InvenList => invenList;
+    private int gold = 0;
+    public int Gold => gold;
+    public void AddItem(int id, int count)
     {
-        
+        int idx = invenList.FindIndex(x => x.id == id);
+        if (idx == -1)
+        {
+            invenList.Add(new itemSlot { id = id, quantity = count });
+        }
+        else
+        {
+            int temp = invenList[idx].quantity + count;
+            invenList[idx] = new itemSlot { id = id, quantity = temp };
+        }
+        inventoryDisplay.DisplayItem();
     }
-
-    public void AddItem(Item item)
+    public void RemoveItem(int id, int count)
     {
-        items.Add(item);
+        int idx = invenList.FindIndex(x => x.id == id);
+        if (idx == -1) return;
+        int temp = invenList[idx].quantity - count;
+        if (temp <= 0)
+            invenList.RemoveAt(idx);
+        else
+        {
+            invenList[idx] = new itemSlot { id = id, quantity = temp };
+        }
+        inventoryDisplay.DisplayItem();
     }
-
-    public void RemoveItem(Item item)
-    {
-        items.Remove(item);
-    }
-    
     public void AddGold(int amount)
     {
         gold += amount;
+        inventoryDisplay.DisplayGold();
+    }
+    public void RemoveGold(int amount)
+    {
+        gold -= amount;
+        if (gold < 0) gold = 0;
+        inventoryDisplay.DisplayGold();
     }
 }

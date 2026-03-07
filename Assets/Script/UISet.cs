@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class UISet : MonoBehaviour
 {
-    public GameObject Status;
-    public GameObject Inventory;
-    public GameObject ItemChoicePanel;
-    public GameObject EquipWindow;
+    [SerializeField]
+    private GameObject Status;
+    [SerializeField]
+    private GameObject Inventory;
+    [SerializeField]
+    private GameObject EquipWindow;
+    [SerializeField]
+    private GameObject SkillWindow;
     // Start is called before the first frame update
     void Start()
     {
         Status.SetActive(false);
         Inventory.SetActive(false);
         EquipWindow.SetActive(false);
+        SkillWindow.SetActive(false);
     }
 
     // Update is called once per frame
@@ -30,6 +35,10 @@ public class UISet : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             EquipWindow.SetActive(!EquipWindow.activeSelf);
+        }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            SkillWindow.SetActive(!SkillWindow.activeSelf);
         }
     }
 }

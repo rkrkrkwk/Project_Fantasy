@@ -12,5 +12,5 @@ public class Item : ScriptableObject
     [TextArea(3, 10)]
     public string flavorText;
     [Header("Item Stats")]
-    public statStruct stat;
+    public StatStruct stat;
 }

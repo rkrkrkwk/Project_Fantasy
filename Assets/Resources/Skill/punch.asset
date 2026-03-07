@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af41d9dcc78cd104d8ff1b6b35bbdde2, type: 3}
+  m_Name: punch
+  m_EditorClassIdentifier: 
+  skillId: 1
+  skillName: punch
+  flavorText: "\uC8FC\uBA39\uC9C8"
+  damage: 5
+  cost: 0
+  sprite: {fileID: -2413806693520163455, guid: f02fd7979bf671246a31529de5dd7c86, type: 3}

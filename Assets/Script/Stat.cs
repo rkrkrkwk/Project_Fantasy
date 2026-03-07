@@ -1,124 +1,55 @@
 using System;
+using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 [Serializable]
-public class statStruct
+public class stat
 {
-    public float AddMaxHP;
-    public float AddMaxMP;
-    public float AddATK;
-    public float AddMAT;
-    public float LV;
-    public float MaxHP;
-    public float MaxMP;
-    public float HP;
-    public float MP;
-    public float ATK;
-    public float MAT;
+    // basic stat decide by level
+    public float basic;
+    // modifier decide by item, skill, etc
+    public float modifier;
+    // percent modifier decide by item, skill, etc
+    public float percent;
+    // final stat
+    private float final;
+    public float Final { get => final; }
 
-    public statStruct(float addMaxHP, float addMaxMP, float addATK, float addMAT, float lv, float maxHP, float maxMP, float hp, float mp, float atk, float mat)
+    public void calculate()
     {
-        AddMaxHP = addMaxHP;
-        AddMaxMP = addMaxMP;
-        AddATK = addATK;
-        AddMAT = addMAT;
-        LV = lv;
-        MaxHP = maxHP;
-        MaxMP = maxMP;
-        HP = hp>maxHP?maxHP:hp;
-        MP = mp>maxMP?maxMP:mp;
-        ATK = atk;
-        MAT = mat;
-    }
-    public statStruct() {}
-    public statStruct(statStruct stat) 
-    { 
-        AddMaxHP = stat.AddMaxHP;
-        AddMaxMP = stat.AddMaxMP;
-        AddATK = stat.AddATK;
-        AddMAT = stat.AddMAT;
-        LV = stat.LV;
-        MaxHP = stat.MaxHP;
-        MaxMP = stat.MaxMP;
-        HP = stat.HP;
-        MP = stat.MP;
-        ATK = stat.ATK;
-        MAT = stat.MAT;
+        final = (basic + modifier) * (1 + percent);
     }
 
-    public static statStruct operator +(statStruct a, statStruct b)
+    
+    public stat (float basic, float modifier, float percent) 
     {
-        statStruct res = new statStruct();
-        res.AddMaxHP = a.AddMaxHP + b.AddMaxHP;
-        res.AddMaxMP = a.AddMaxMP + b.AddMaxMP;
-        res.AddATK = a.AddATK + b.AddATK;
-        res.AddMAT = a.AddMAT + b.AddMAT;
-        res.LV = a.LV + b.LV;
-        res.MaxHP = a.MaxHP + b.MaxHP;
-        res.MaxMP = a.MaxMP + b.MaxMP;
-        res.HP = a.HP + b.HP;
-        res.MP = a.MP + b.MP;
-        res.ATK = a.ATK + b.ATK;
-        res.MAT = a.MAT + b.MAT;
-        return res;
-    }
-    public static statStruct operator -(statStruct a, statStruct b)
-    {
-        statStruct res = new statStruct();
-        res.AddMaxHP = a.AddMaxHP - b.AddMaxHP;
-        res.AddMaxMP = a.AddMaxMP - b.AddMaxMP;
-        res.AddATK = a.AddATK - b.AddATK;
-        res.AddMAT = a.AddMAT - b.AddMAT;
-        res.LV = a.LV - b.LV;
-        res.MaxHP = a.MaxHP - b.MaxHP;
-        res.MaxMP = a.MaxMP - b.MaxMP;
-        res.HP = a.HP - b.HP;
-        res.MP = a.MP - b.MP;
-        res.ATK = a.ATK - b.ATK;
-        res.MAT = a.MAT - b.MAT;
-        return res;
+        this.basic = basic;
+        this.modifier = modifier;
+        this.percent = percent;
+        calculate();
     }
 
-    public void setStat(float addMaxHP, float addMaxMP, float addATK, float addMAT, float lv, float maxHP, float maxMP, float hp, float mp, float atk, float mat)
+    public stat (float basic) 
     {
-        AddMaxHP = addMaxHP;
-        AddMaxMP = addMaxMP;
-        AddATK = addATK;
-        AddMAT = addMAT;
-        LV = lv;
-        MaxHP = maxHP;
-        MaxMP = maxMP;
-        HP = hp>maxHP?maxHP:hp;
-        MP = mp>maxMP?maxMP:mp;
-        ATK = atk;
-        MAT = mat;
+        this.basic = basic;
+        this.modifier = 0;
+        this.percent = 0;
+        calculate();
     }
 
-    public void resetStat()
+    public stat()
     {
-        AddMaxHP = 0;
-        AddMaxMP = 0;
-        AddATK = 0;
-        AddMAT = 0;
-        LV = 0;
-        MaxHP = 0;
-        MaxMP = 0;
-        HP = 0;
-        MP = 0;
-        ATK = 0;
-        MAT = 0;
+        this.basic = 0;
+        this.modifier = 0;
+        this.percent = 0;
+        calculate();
     }
-
-    public void addStat(float addMaxHP, float addMaxMP, float addATK, float addMAT, float lv, float maxHP, float maxMP, float hp, float mp, float atk, float mat)
+    
+    static public stat operator +(stat s1, stat s2)
     {
-        AddMaxHP += addMaxHP;
-        AddMaxMP += addMaxMP;
-        AddATK += addATK;
-        AddMAT += addMAT;
-        LV += lv;
-        MaxHP += maxHP;
-        MaxMP += maxMP;
-        HP += hp;
-        MP += mp;
-        ATK += atk;
-        MAT += mat;
+        return new stat(s1.basic + s2.basic, s1.modifier + s2.modifier, s1.percent + s2.percent);
+    }
+    static public stat operator -(stat s1, stat s2)
+    {
+        return new stat(s1.basic - s2.basic, s1.modifier - s2.modifier, s1.percent - s2.percent);
     }
 };

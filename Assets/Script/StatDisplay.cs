@@ -11,27 +11,24 @@ public class StatDisplay : MonoBehaviour
     public TextMeshProUGUI THP;
     public TextMeshProUGUI TMP;
     public TextMeshProUGUI TATK;
-    public TextMeshProUGUI TMAT;
+    public TextMeshProUGUI TDEF;
 
-    void UpdateStatus(statStruct status)
+    public void UpdateStatus(Status status)
     {
-        TLV.text = status.LV.ToString();
-        THP.text = status.MaxHP.ToString() + (status.AddMaxHP != 0 ? "+" + "(" + status.AddMaxHP.ToString() + ")" : "") + " / " + status.HP.ToString();
-        TMP.text = status.MaxMP.ToString() + (status.AddMaxMP != 0 ? "+" + "(" + status.AddMaxMP.ToString() + ")" : "") + " / " + status.MP.ToString();
-        TATK.text = status.ATK.ToString() + (status.AddATK != 0 ? "+" + "(" + status.AddATK.ToString() + ")" : "");
-        TMAT.text = status.MAT.ToString() + (status.AddMAT != 0 ? "+" + "(" + status.AddMAT.ToString() + ")" : "");
+        StatStruct stat = status.stat;
+        TLV.text = status.level.ToString();
+        THP.text = stat.MaxHP.basic.ToString() + (stat.MaxHP.modifier != 0 ? "+(" + stat.MaxHP.modifier.ToString() + ")" : "") + " / " + status.hp.ToString();
+        TMP.text = stat.MaxMP.basic.ToString() + (stat.MaxMP.modifier != 0 ? "+(" + stat.MaxMP.modifier.ToString() + ")" : "") + " / " + status.mp.ToString();
+        TATK.text = stat.ATK.basic.ToString() + (stat.ATK.modifier != 0 ? "+(" + stat.ATK.modifier.ToString() + ")" : "");
+        TDEF.text = stat.DEF.basic.ToString() + (stat.DEF.modifier != 0 ? "+(" + stat.DEF.modifier.ToString() + ")" : "");
     }
     public void Awake()
     {
         player = GameObject.FindWithTag("Player");
         playerStatus = player.GetComponent<Status>();
     }
-    public void Start()
+    public void OnEnable()
     {
-        
-    }
-    public void Update()
-    {
-        UpdateStatus(playerStatus.status);
+        UpdateStatus(playerStatus);
     }
 }

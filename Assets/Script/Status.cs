@@ -4,58 +4,109 @@ using UnityEngine;
 using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine.UIElements;
+using JetBrains.Annotations;
 public class Status : MonoBehaviour
 {
-    public statStruct baseStat = new statStruct(0, 0, 0, 0, 1, 10, 10, 10, 10, 5, 5);
-    public statStruct itemStat = new statStruct();
-    public statStruct status = new statStruct();
-    public Equipment equipment;
+    private int Level;
+    private StatStruct status = new StatStruct();
+    private float HP;
+    private float MP;
+    public int level { get => Level; set => Level = value; }
+    public StatStruct stat { get => status; set => status = value; }
+    public float hp { get => HP; set => HP = value; }
+    public float mp { get => MP; set => MP = value; }
+    [SerializeField]
+    private StatDisplay statDisplay;
+    [SerializeField]
+    private Equipment equipment;
+
     void Awake()
     {
-        equipment = gameObject.GetComponent<Equipment>();
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        calcStat();
-    }
-    public void getItemStat()
-    {
-        Item[] items = equipment.items;
-        statStruct res = new statStruct();
-        for(int i = 0; i < items.Length; i++)
+        if (checkStatusFile())
         {
-            if (items[i] != null)
+            Debug.Log("Status File exists");
+            if (LoadStatus())
             {
-                res = res + items[i].stat;
+                Debug.Log("Status has been loaded");
+            }
+            else
+            {
+                Debug.Log("Status has not been loaded");
             }
         }
-        itemStat = res;
+        else
+        {
+            Debug.Log("Status File does not exist");
+            init();
+        }
+    }
+    
+    private bool checkStatusFile()
+    {
+        //check file
+        Debug.Log("Check Status File");
+        return false;
     }
 
-    public void calcStat()
+    private bool LoadStatus()
     {
-        getItemStat();
-        status = baseStat + itemStat;
+        //load file
+        Debug.Log("Load Status");
+        return false;
     }
 
-    public void LVUP()
+    private void init()
     {
-        baseStat.addStat(0,0,0,0,1,10,10,10,10,5,5);
+        level = 1;
+        status.MaxHP = new stat(10);
+        status.MaxMP = new stat(10);
+        status.ATK = new stat(1);
+        status.DEF = new stat(1);
+        HP = status.MaxHP.Final;
+        MP = status.MaxMP.Final;
+    }
+
+    private void calcBasic()
+    {
+        status.MaxHP.basic = level * 10;
+        status.MaxMP.basic = level * 10;
+        status.ATK.basic = level;
+        status.DEF.basic = level;
+        calcAll();
+    }
+
+    public void calcModifier()
+    {
+        // get item, skill stat and calculated
+        foreach (var item in equipment.Items.Values)
+        {
+            if (item != null)
+            {
+                stat += item.stat;
+                Debug.Log("Item " + item.itemName + "status" + stat.MaxHP.modifier + "," + stat.MaxMP.modifier + "," + stat.ATK.modifier + "," + stat.DEF.modifier +  " has been acquired");
+            }
+        }
+        Debug.Log("Modifier has been calculated");
+        calcAll();
+    }
+
+    private void calcAll()
+    {
+        stat.calcAll();
+        statDisplay.UpdateStatus(this);
     }
 
     public void getDamage(float damage)
     {
-        baseStat.HP -= damage;
-        if (baseStat.HP < 0)
-        {
-            Destroy(gameObject);
-        }
+        HP -= damage;
+        if (HP < 0) HP = 0;
+        Destroy(gameObject);
+    }
+
+    public void resetStatus()
+    {
+        status.reset(); 
+        calcBasic();
+        calcModifier();
     }
 }

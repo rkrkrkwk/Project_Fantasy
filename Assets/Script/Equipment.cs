@@ -1,27 +1,63 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Search;
 using UnityEngine;
 
 public class Equipment : MonoBehaviour
 {
-    private const int MAX_EQUIPMENT = 4; // 장비 창 개수
-    public EquipmentType equippedPart; // 장비한 부위
-    public Item[] items = new Item[MAX_EQUIPMENT]; // 장비한 아이템 리스트
-
-    public void equip(EquipmentType part, Item item)
+    private Inventory inventory;
+    private Dictionary<EquipmentType, Item> items = new Dictionary<EquipmentType, Item>();
+    public IReadOnlyDictionary<EquipmentType, Item> Items => items;
+    [SerializeField]
+    private EquipmentDisplay equipmentDisplay;
+    [SerializeField]
+    private Status status;
+    void Awake()
     {
-        items[(int)Mathf.Log((int)part, 2)] = item;
-        equippedPart |= part;
-        GetComponent<Inventory>().RemoveItem(item);
+        inventory = GetComponent<Inventory>();
+        foreach (EquipmentType type in Enum.GetValues(typeof(EquipmentType)))
+        {
+            items.Add(type, null);
+        }
     }
-    public void unequip(EquipmentType part)
+    public void Equip(EquipmentType part, Item item)
     {
-        int index = (int)Mathf.Log((int)part, 2);
-        if(items[index] != null) GetComponent<Inventory>().AddItem(items[index]);
-        items[index] = null;
-        equippedPart &= ~part;
+        if(IsEquipped(part))
+        {
+            Unequip(part);
+        }
+        SetItem(part, item);
+        status.resetStatus();
+        equipmentDisplay.DisplayEquipment();
+        inventory.RemoveItem(item.id, 1);
+    }
+    public void Unequip(EquipmentType part)
+    {
+        inventory.AddItem(GetItem(part).id, 1);
+        RemoveItem(part);
+        status.resetStatus();
+        equipmentDisplay.DisplayEquipment();
+    }
+    public void SwitchEquipment(EquipmentType part, EquipmentType targetPart)
+    {
+        Item temp = GetItem(part);
+        SetItem(part, GetItem(targetPart));
+        SetItem(targetPart, temp);
+        equipmentDisplay.DisplayEquipment();
+    }
+    public void SetItem(EquipmentType part, Item item)
+    {
+        items[part] = item;
+    }
+    public void RemoveItem(EquipmentType part)
+    {
+        items[part] = null;
+    }
+    public Item GetItem(EquipmentType part)
+    {
+        return items[part];
+    }
+    public bool IsEquipped(EquipmentType part)
+    {
+        return items[part] != null;
     }
 }

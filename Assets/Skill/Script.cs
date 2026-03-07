@@ -6,7 +6,7 @@ using UnityEngine.Video;
 
 public class Script : MonoBehaviour
 {
-    public statStruct status;
+    public Status status;
 
     public float watk;
 
@@ -20,7 +20,7 @@ public class Script : MonoBehaviour
     {
         // 시전 지점
         position = transform.position;
-        damage = status.ATK * watk;
+        damage = status.stat.ATK.Final * watk;
     }
 
     // Update is called once per frame

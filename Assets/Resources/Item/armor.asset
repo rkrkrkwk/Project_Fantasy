@@ -17,14 +17,19 @@ MonoBehaviour:
   icon: {fileID: 7482667652216324306, guid: e36b1f900238f55469aba9c2ebc1246d, type: 3}
   flavorText: "\uBC29\uC5B4\uAD6C\uB2E4."
   stat:
-    AddMaxHP: 10
-    AddMaxMP: 0
-    AddATK: 0
-    AddMAT: 0
-    LV: 0
-    MaxHP: 0
-    MaxMP: 0
-    HP: 0
-    MP: 0
-    ATK: 0
-    MAT: 0
+    MaxHP:
+      basic: 0
+      modifier: 10
+      percent: 0
+    MaxMP:
+      basic: 0
+      modifier: 0
+      percent: 0
+    ATK:
+      basic: 0
+      modifier: 0
+      percent: 0
+    DEF:
+      basic: 0
+      modifier: 0
+      percent: 0

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,19 +9,20 @@ using UnityEngine;
 
 public class InventoryDisplay : MonoBehaviour
 {
-    GameObject player;
-    // Start is called before the first frame update
-    void Awake()
-    {
-        player = GameObject.FindGameObjectWithTag("Player");
-    }
+    [SerializeField]
+    private GameObject itemColumn;
+    [SerializeField]
+    private TMPro.TextMeshProUGUI goldText;
+    [SerializeField]
+    private Inventory inventory;
+    [SerializeField]
+    private ItemList itemList;
+    private int index;
     void Start()
     {
-        
+        init();
     }
-
-    // Update is called once per frame
-    void Update()
+    void OnEnable()
     {
         DisplayGold();
         DisplayItem();
@@ -28,21 +30,36 @@ public class InventoryDisplay : MonoBehaviour
 
     public void DisplayGold()
     {
-        gameObject.transform.GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = player.GetComponent<Inventory>().gold.ToString();
+        goldText.text = inventory.Gold.ToString();
     }
 
     public void DisplayItem()
     {
-        for (int i = 0; i < gameObject.transform.GetChild(0).transform.childCount; i++)
+        index = 0;
+        foreach (Transform child in itemColumn.transform)
         {
-            for (int j = 0; j < gameObject.transform.GetChild(0).transform.GetChild(i).childCount; j++)
+            foreach (Transform grandChild in child)
             {
-                if (i * 5 + j < player.GetComponent<Inventory>().Items.Count)
-                    gameObject.transform.GetChild(0).transform.GetChild(i).GetChild(j).GetComponent<ItemHolderControl>().item = player.GetComponent<Inventory>().Items[i * 5 + j];
-                if (i * 5 + j >= player.GetComponent<Inventory>().Items.Count)
+                if (index >= inventory.InvenList.Count)
                 {
-                    gameObject.transform.GetChild(0).transform.GetChild(i).GetChild(j).GetComponent<ItemHolderControl>().item = null;
+                    grandChild.GetComponent<InventoryHolder>().ClearItem();
+                    grandChild.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = "";
+                    return;
                 }
+                grandChild.GetComponent<InventoryHolder>().SetItem(itemList.GetItem(inventory.InvenList[index].id));
+                grandChild.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = inventory.InvenList[index].quantity.ToString();
+                index++;
+            }
+        }
+    }
+    public void init()
+    {
+        foreach (Transform child in itemColumn.transform)
+        {
+            foreach (Transform grandChild in child)
+            {
+                grandChild.GetComponent<InventoryHolder>().ClearItem();
+                grandChild.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = "";
             }
         }
     }
