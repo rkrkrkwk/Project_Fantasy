@@ -9,12 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af41d9dcc78cd104d8ff1b6b35bbdde2, type: 3}
+  m_Script: {fileID: 11500000, guid: d6c4862308446194095debf069a42ad0, type: 3}
   m_Name: punch
   m_EditorClassIdentifier: 
   skillId: 1
   skillName: punch
-  flavorText: "\uC8FC\uBA39\uC9C8"
+  flavorText: "\uC8FC\uBA39\uC774\uB2E4."
+  icon: {fileID: -2413806693520163455, guid: f02fd7979bf671246a31529de5dd7c86, type: 3}
+  prefab: {fileID: 1143836708682642962, guid: 0b9a0d7d69d1cd147a8a0ecee96b7dc2, type: 3}
   damage: 5
-  cost: 0
-  sprite: {fileID: -2413806693520163455, guid: f02fd7979bf671246a31529de5dd7c86, type: 3}
+  speed: 1

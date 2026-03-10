@@ -27,7 +27,7 @@ public class SkillDisplay : MonoBehaviour
         foreach (SkillData skill in skillList)
         {
             SkillPanelControl g = Instantiate(skillPanelControl, content.transform);
-            g.SetSkill(skill.skillId, skill.skillName, skill.sprite);
+            g.SetSkill(skill.skillId, skill.skillName, skill.icon);
         }
     }
 }

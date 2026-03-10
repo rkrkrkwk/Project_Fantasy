@@ -4,24 +4,20 @@ using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "SkillDatabase", menuName = "Skill/SkillDatabase", order = 1)]
-public class SkillDatabase : ScriptableObject
+public class SkillDatabase
 {
     private List<SkillData> skillList = new List<SkillData>();
     public IReadOnlyList<SkillData> SkillList => skillList;
     private Dictionary<int, SkillData> SkillLookup = new Dictionary<int, SkillData>();
     public IReadOnlyDictionary<int, SkillData> SkillLookupTable => SkillLookup;
-    public static SkillDatabase Instance { get; private set; }
+    public static SkillDatabase Instance { get; private set; } = new SkillDatabase();
+    SkillDatabase()
+    {
+        Init();
+    }
     public void Clear()
     {
         skillList.Clear();
-    }
-
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-    private static void InitInstance()
-    {
-        Instance = Resources.Load<SkillDatabase>("SkillDatabase/SkillDatabase");
-        Debug.Log(Instance);
-        Instance.Init();
     }
     public void Init()
     {

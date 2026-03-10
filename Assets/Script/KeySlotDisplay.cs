@@ -9,22 +9,20 @@ using Unity.VisualScripting;
 public class KeySlotDisplay : MonoBehaviour
 {
     [SerializeField]
-    private KeyPanelControl keyPanelControl;
-    [SerializeField]
     private List<KeySlotControl> keySlotControls = new List<KeySlotControl>();
-    private Dictionary<KeyCode, KeySlotControl> keySlotControlDict = new Dictionary<KeyCode, KeySlotControl>();
+    private Dictionary<Action, KeySlotControl> keySlotControlDict = new Dictionary<Action, KeySlotControl>();
     void Awake()
     {
         foreach (KeySlotControl keySlotControl in keySlotControls)
         {
-            keySlotControlDict.Add(keySlotControl.getKeyCode(), keySlotControl);
+            keySlotControlDict.Add(keySlotControl.getAction(), keySlotControl);
         }
     }
     public void DisplayKeySlot()
     {
         foreach ( var pair in keySlotControlDict)
         {
-            pair.Value.SetSkill(keyPanelControl.GetSkill(pair.Key));
+            pair.Value.SetSkill(ActionSkillControl.Instance.GetSkill(pair.Key));
         }
     }
 }

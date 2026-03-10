@@ -20,12 +20,16 @@ public class KeySlotControl : MonoBehaviour, IPointerClickHandler
     public void SetSkill(int skillId)
     {
         sid = skillId;
-        sprite.sprite = SkillDatabase.Instance.GetSkillData(sid).sprite;
+        sprite.sprite = SkillDatabase.Instance.GetSkillData(sid).icon;
     }
     public KeyCode getKeyCode()
     {
         return keyCode;
-    }  
+    } 
+    public Action getAction()
+    {
+        return action;
+    }
     public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)
@@ -33,7 +37,7 @@ public class KeySlotControl : MonoBehaviour, IPointerClickHandler
             if (KeySettingHelper.Instance.getSetter() != -1)
             {
                 SetSkill(KeySettingHelper.Instance.getSetter());
-                KeyControl.Instance.SetKey(action, keyCode);
+                ActionSkillControl.Instance.SetSkill(sid, action);
                 KeySettingHelper.Instance.setSetter(-1);
             }
         }

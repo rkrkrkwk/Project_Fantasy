@@ -6,13 +6,13 @@ using Microsoft.Unity.VisualStudio.Editor;
 
 [Serializable]
 [CreateAssetMenu(fileName = "SkillData", menuName = "Skill/SkillData", order = 1)]
-public class SkillData : ScriptableObject
+public abstract class SkillData : ScriptableObject
 {
     public int skillId;
     public string skillName;
     public string flavorText;
-    public int damage;
-    public int cost;
-    public UnityEngine.Sprite sprite;
+    public UnityEngine.Sprite icon;
+    public GameObject prefab;
+    public abstract void Execute();
 }
 
