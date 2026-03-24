@@ -100,7 +100,7 @@ public class Status : MonoBehaviour
     {
         HP -= damage;
         if (HP < 0) HP = 0;
-        Destroy(gameObject);
+        dead();
     }
 
     public void resetStatus()
@@ -108,5 +108,13 @@ public class Status : MonoBehaviour
         status.reset(); 
         calcBasic();
         calcModifier();
+    }
+
+    public void dead()
+    {
+        if (gameObject.tag == "Player")
+            gameObject.SetActive(false);
+        else
+            Destroy(gameObject);
     }
 }

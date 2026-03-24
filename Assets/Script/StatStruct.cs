@@ -51,4 +51,20 @@ public class StatStruct
         ATK = new stat();
         DEF = new stat();
     }
+    public float getStat(StatType statType)
+    {
+        switch (statType)
+        {
+            case StatType.MaxHP:
+                return MaxHP.Final;
+            case StatType.MaxMP:
+                return MaxMP.Final;
+            case StatType.ATK:
+                return ATK.Final;
+            case StatType.DEF:
+                return DEF.Final;
+            default:
+                return 0;
+        }
+    }
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1454354679737710417}
   - component: {fileID: -4507429261470434810}
   - component: {fileID: 2350627579923424335}
-  - component: {fileID: 2263015676233935787}
+  - component: {fileID: 6127674293449560272}
   m_Layer: 0
   m_Name: Punch
   m_TagString: Untagged
@@ -149,7 +149,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &2263015676233935787
+--- !u!114 &6127674293449560272
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,11 +158,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1143836708682642962}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8df0b33525258742993f3a03b0031a5, type: 3}
+  m_Script: {fileID: 11500000, guid: 90702e2120826aa458a8fd4d4e074fb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  watk: 5
-  cooltime: 0.3
-  damage: 5
-  shootspeed: 10
-  range: 1

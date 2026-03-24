@@ -17,5 +17,8 @@ MonoBehaviour:
   flavorText: "\uC8FC\uBA39\uC774\uB2E4."
   icon: {fileID: -2413806693520163455, guid: f02fd7979bf671246a31529de5dd7c86, type: 3}
   prefab: {fileID: 1143836708682642962, guid: 0b9a0d7d69d1cd147a8a0ecee96b7dc2, type: 3}
-  damage: 5
-  speed: 1
+  baseDamage: 1
+  weightPairs: []
+  speed: 10
+  range: 1
+  pierce: 1

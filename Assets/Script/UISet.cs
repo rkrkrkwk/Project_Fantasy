@@ -12,6 +12,8 @@ public class UISet : MonoBehaviour
     private GameObject EquipWindow;
     [SerializeField]
     private GameObject SkillWindow;
+    [SerializeField]
+    private GameObject Menu;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,7 @@ public class UISet : MonoBehaviour
         Inventory.SetActive(false);
         EquipWindow.SetActive(false);
         SkillWindow.SetActive(false);
+        Menu.SetActive(false);
     }
 
     // Update is called once per frame
@@ -39,6 +42,10 @@ public class UISet : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.K))
         {
             SkillWindow.SetActive(!SkillWindow.activeSelf);
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Menu.SetActive(!Menu.activeSelf);
         }
     }
 }

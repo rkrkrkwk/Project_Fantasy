@@ -19,6 +19,7 @@ public class KeySlotControl : MonoBehaviour, IPointerClickHandler
     }
     public void SetSkill(int skillId)
     {
+        if (skillId <= 0) return;
         sid = skillId;
         sprite.sprite = SkillDatabase.Instance.GetSkillData(sid).icon;
     }

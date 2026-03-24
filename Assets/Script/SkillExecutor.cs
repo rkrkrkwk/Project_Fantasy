@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -5,25 +6,30 @@ using UnityEngine;
 
 public class SkillExecutor : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject player;
-    private Skill skill;
     void Update()
     {
-        if (Input.GetKeyDown(KeyControl.Instance.GetKey(Action.skill1)))
+        foreach (Action action in ActionSkillControl.Instance.actions)
         {
-            int sid = ActionSkillControl.Instance.SkillSlot[Action.skill1];
-            if (sid == -1) return;
-            else
-                SkillDatabase.Instance.GetSkillData(sid).Execute();
+            if (Input.GetKeyDown(KeyControl.Instance.GetKey(action)))
+            {
+                int sid = ActionSkillControl.Instance.SkillSlot[action];
+                if (sid == -1) continue;
+                else
+                    ExecuteSkill(SkillDatabase.Instance.GetSkillData(sid));
+            }
         }
     }
     public void ExecuteSkill(SkillData skillData)
     {
         if(skillData is ProjectileData)
         {
-            GameObject projectile = Instantiate(skillData.prefab, player.transform.position, quaternion.identity);
-            projectile.GetComponent<Projectile>().SetSkill(skillData);
+            GameObject projectile = Instantiate(skillData.prefab, transform.position, transform.rotation);
+            projectile.GetComponent<Projectile>().SetSkill(skillData, "Enemy");
         }
+    }
+    public float calcSkillDamage (SkillData skillData)
+    {
+        
+        return 1f;
     }
 }
