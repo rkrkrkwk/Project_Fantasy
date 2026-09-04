@@ -13,10 +13,7 @@ GameObject:
   - component: {fileID: 3165370627984024210}
   - component: {fileID: 4086669205790566329}
   - component: {fileID: 5996896929129221372}
-  - component: {fileID: 2989363992945857485}
-  - component: {fileID: 6209345365583775775}
-  - component: {fileID: 4903649729876962756}
-  - component: {fileID: 140428283115542717}
+  - component: {fileID: 4965306902367526951}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -80,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: e4cb3c806f709fc4c9dae575940a0cf2, type: 3}
+  m_Sprite: {fileID: 1735779065, guid: b297bf040f2b573498b4f2a3564fc99f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -104,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  rotationSpeed: 5
+  rb: {fileID: 4086669205790566329}
 --- !u!50 &4086669205790566329
 Rigidbody2D:
   serializedVersion: 4
@@ -177,108 +174,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7, y: 0.7}
   m_EdgeRadius: 0
---- !u!114 &2989363992945857485
-MonoBehaviour:
+--- !u!95 &4965306902367526951
+Animator:
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6227499015238777970}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 312bf18e7598e3e468bba8adccfef8bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillHolder0: {fileID: 1143836708682642962, guid: 0b9a0d7d69d1cd147a8a0ecee96b7dc2, type: 3}
---- !u!114 &6209345365583775775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6227499015238777970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7f1e63dd4ff3df46ae3e84a4525d5f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gold: 0
---- !u!114 &4903649729876962756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6227499015238777970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 987e62da8d5dede4fb70d5adc5aabc47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  equippedPart: 0
-  items:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  EquipStats:
-    AddMaxHP: 0
-    AddMaxMP: 0
-    AddATK: 0
-    AddMAT: 0
-    LV: 0
-    MaxHP: 0
-    MaxMP: 0
-    HP: 0
-    MP: 0
-    ATK: 0
-    MAT: 0
---- !u!114 &140428283115542717
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6227499015238777970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 139044b16ca5fd242be6d7d05cc2317e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseStat:
-    AddMaxHP: 0
-    AddMaxMP: 0
-    AddATK: 0
-    AddMAT: 0
-    LV: 1
-    MaxHP: 10
-    MaxMP: 10
-    HP: 10
-    MP: 10
-    ATK: 5
-    MAT: 5
-  itemStat:
-    AddMaxHP: 0
-    AddMaxMP: 0
-    AddATK: 0
-    AddMAT: 0
-    LV: 0
-    MaxHP: 0
-    MaxMP: 0
-    HP: 0
-    MP: 0
-    ATK: 0
-    MAT: 0
-  status:
-    AddMaxHP: 0
-    AddMaxMP: 0
-    AddATK: 0
-    AddMAT: 0
-    LV: 1
-    MaxHP: 0
-    MaxMP: 0
-    HP: 0
-    MP: 0
-    ATK: 0
-    MAT: 0
-  items: []
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a14e8519b95718840963e2fd978a6e5d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

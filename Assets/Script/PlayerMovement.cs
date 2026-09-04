@@ -2,27 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.Video;
+using System;
 
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    public float rotationSpeed = 5f;
-    private Rigidbody2D rb;
+    [SerializeField] private Rigidbody2D rb;
     private Vector2 movement;
     private float angle;
     private Vector3 mousePosition;
     private Vector2 lookDirection;
-    private float smoothedAngle;
     public float getAngle(){
         return this.angle;
-    }
-    void Awake() {
-        rb = GetComponent<Rigidbody2D>();
-    }
-    void Start()
-    {
-        
     }
 
     void Update()
@@ -32,12 +23,18 @@ public class PlayerMovement : MonoBehaviour
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         lookDirection = mousePosition - transform.position;
         angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
+        if (Mathf.Abs(angle) > 90)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
     }
 
     void FixedUpdate() {
         Vector2 normalizedMovement = movement.normalized;
         rb.MovePosition(rb.position + normalizedMovement * moveSpeed * Time.fixedDeltaTime);
-        smoothedAngle = Mathf.LerpAngle(rb.rotation, angle, rotationSpeed * Time.deltaTime);
-        rb.rotation = smoothedAngle;
     }
 }

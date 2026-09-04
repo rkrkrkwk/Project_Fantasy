@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: punch
   m_EditorClassIdentifier: 
   skillId: 1
-  skillName: punch
-  flavorText: "\uC8FC\uBA39\uC774\uB2E4."
-  icon: {fileID: -2413806693520163455, guid: f02fd7979bf671246a31529de5dd7c86, type: 3}
-  prefab: {fileID: 1143836708682642962, guid: 0b9a0d7d69d1cd147a8a0ecee96b7dc2, type: 3}
+  skillName: "\uC8FC\uBA39\uC9C8"
+  flavorText: "\uC8FC\uBA39\uC744 \uBED7\uC5B4 \uACF5\uACA9\uD558\uB294 \uAE30\uC220."
+  icon: {fileID: -1072143615, guid: ca22d49cf4f37fe47a130a684391c6ea, type: 3}
+  prefab: {fileID: 5431912579410692219, guid: 68f1d0f91fe73b64e8bb2e290f882c8f, type: 3}
   baseDamage: 1
   weightPairs: []
   speed: 10

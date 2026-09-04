@@ -11,7 +11,7 @@ public class KeySlotControl : MonoBehaviour, IPointerClickHandler
     private KeyCode keyCode;
     private UnityEngine.UI.Image sprite;
     [SerializeField]
-    private Action action;
+    private Actions action;
     private int sid;
     void Awake()
     {
@@ -27,7 +27,7 @@ public class KeySlotControl : MonoBehaviour, IPointerClickHandler
     {
         return keyCode;
     } 
-    public Action getAction()
+    public Actions getAction()
     {
         return action;
     }

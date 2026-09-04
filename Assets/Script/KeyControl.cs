@@ -6,22 +6,22 @@ public class KeyControl
 {
     public static KeyControl Instance {get; private set;} = new KeyControl();
     public const int MAX_SKILL = 6;
-    private Dictionary<Action, KeyCode> key = new Dictionary<Action, KeyCode>();
+    private Dictionary<Actions, KeyCode> key = new Dictionary<Actions, KeyCode>();
     KeyControl() { init(); }
     public void init()
     {
-        key.Add(Action.skill1, KeyCode.Mouse0);
-        key.Add(Action.skill2, KeyCode.Mouse1);
-        key.Add(Action.skill3, KeyCode.Alpha1);
-        key.Add(Action.skill4, KeyCode.Alpha2);
-        key.Add(Action.skill5, KeyCode.Alpha3);
-        key.Add(Action.skill6, KeyCode.Alpha4);
+        key.Add(Actions.skill1, KeyCode.Mouse0);
+        key.Add(Actions.skill2, KeyCode.Mouse1);
+        key.Add(Actions.skill3, KeyCode.Alpha1);
+        key.Add(Actions.skill4, KeyCode.Alpha2);
+        key.Add(Actions.skill5, KeyCode.Alpha3);
+        key.Add(Actions.skill6, KeyCode.Alpha4);
     }
-    public void SetKey(Action action, KeyCode keyCode)
+    public void SetKey(Actions action, KeyCode keyCode)
     {
         key[action] = keyCode;
     }
-    public KeyCode GetKey(Action action)
+    public KeyCode GetKey(Actions action)
     {
         return key[action];
     }

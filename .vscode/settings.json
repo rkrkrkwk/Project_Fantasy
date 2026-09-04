@@ -56,5 +56,13 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Project Fantasy.sln"
+    "dotnet.defaultSolution": "Project Fantasy.sln",
+    "cSpell.words": [
+        "debuff",
+        "MATK",
+        "MCOOL",
+        "MDEF",
+        "PCOOL"
+    ],
+    "git.ignoreLimitWarning": true
 }

@@ -4,29 +4,25 @@ using UnityEngine;
 
 public class SpawnZone : MonoBehaviour
 {
-    [SerializeField]
     private Spawner spawner;
-    private List<GameObject> enemies = new List<GameObject>();
+    private int enemies = 0;
+    private int enemyId;
+    private void Awake()
+    {
+        spawner = transform.parent.GetComponent<Spawner>();
+    }
+    private void Start()
+    {
+        enemyId = EnemyDatabase.instance.EnemyLookup[spawner.getEID()].ID;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") && !enemies.Contains(collision.gameObject))
-        {
-            enemies.Add(collision.gameObject);
-        }
-        if (enemies.Count >= spawner.getMaxEnemies())
-        {
-            spawner.setFull();
-        }
+        if (collision.gameObject.tag == "Enemy" && collision.gameObject.GetComponent<EnemyCore>().getId() == enemyId) enemies++;
+        if (enemies >= spawner.getMaxEnemies()) spawner.setFull();
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Enemy") && enemies.Contains(collision.gameObject))
-        {
-            enemies.Remove(collision.gameObject);
-        }
-        if (enemies.Count < spawner.getMaxEnemies())
-        {
-            spawner.setNotFull();
-        }
+        if (collision.gameObject.tag == "Enemy" && collision.gameObject.GetComponent<EnemyCore>().getId() == enemyId) enemies--;
+        if (enemies < spawner.getMaxEnemies()) spawner.setNotFull();
     }
 }

@@ -1,0 +1,1 @@
+public enum UiEventType { InventoryOpen = 0, SkillOpen = 1 }

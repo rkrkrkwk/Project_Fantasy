@@ -11,17 +11,24 @@ public class Spawner : MonoBehaviour
     private bool isFull = false;
     [SerializeField]
     private int maxEnemies;
+    private Coroutine coroutine;
+    public int getEID() { return EID; }
+    private void Update()
+    {
+        spawnEnemy();
+    }
     public void spawnEnemy()
     {
-        if (!isFull)
+        if (!isFull && coroutine == null)
         {
-            StartCoroutine(spawnEnemyDelay());
+            coroutine = StartCoroutine(spawnEnemyDelay());
         }
     }
     public IEnumerator spawnEnemyDelay()
     {
+        Instantiate(EnemyDatabase.instance.EnemyLookup[EID].prefab, new Vector3(transform.position.x + Random.value * transform.localScale.x, transform.position.y + Random.value * transform.localScale.y, 1), transform.rotation);
         yield return new WaitForSeconds(respawnTime);
-        Instantiate(EnemyDatabase.instance.EnemyLookup[EID].prefab, new Vector3(Random.value * transform.localScale.x, Random.value * transform.localScale.y, 1), transform.rotation);
+        coroutine = null;
     }
     public void setFull()
     {

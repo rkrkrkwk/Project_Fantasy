@@ -10,7 +10,7 @@ public class KeySlotDisplay : MonoBehaviour
 {
     [SerializeField]
     private List<KeySlotControl> keySlotControls = new List<KeySlotControl>();
-    private Dictionary<Action, KeySlotControl> keySlotControlDict = new Dictionary<Action, KeySlotControl>();
+    private Dictionary<Actions, KeySlotControl> keySlotControlDict = new Dictionary<Actions, KeySlotControl>();
     void Awake()
     {
         foreach (KeySlotControl keySlotControl in keySlotControls)
