@@ -9,10 +9,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df66c9d6f4ca15d4ab24fa8dd4bd2255, type: 3}
-  m_Name: armor
+  m_Script: {fileID: 11500000, guid: 5f00a6af5888e7546ae7509d117743ee, type: 3}
+  m_Name: Armor
   m_EditorClassIdentifier: 
   id: 2
   itemName: Armor
   icon: {fileID: -1632481829, guid: ca22d49cf4f37fe47a130a684391c6ea, type: 3}
   flavorText: "\uBC29\uC5B4\uAD6C\uB2E4."
+  stats:
+  - basic: 0
+    item: 5
+    final: 0
+  - basic: 0
+    item: 0
+    final: 0
+  - basic: 0
+    item: 0
+    final: 0

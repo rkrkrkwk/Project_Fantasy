@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
@@ -11,6 +12,5 @@ public class Item : ScriptableObject
     public Sprite icon;
     [TextArea(3, 10)]
     public string flavorText;
-    [Header("Item Stats")]
-    public StatStruct stat;
+    public ItemType itemType;
 }

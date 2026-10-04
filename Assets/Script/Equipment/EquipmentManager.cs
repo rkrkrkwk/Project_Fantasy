@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class EquipmentManager : MonoBehaviour
 {
-    [SerializeField]
-    private Equipment equipment;
-    [SerializeField]
-    private EquipmentDisplay equipmentDisplay;
-    [SerializeField]
-    private Inventory inventory;
-    public void Equip(EquipmentType type, Item item)
+    [SerializeField] private PlayerStatusManager playerStatusManager;
+    [SerializeField] private Equipment equipment;
+    [SerializeField] private EquipmentDisplay equipmentDisplay;
+    [SerializeField] private Inventory inventory;
+    public void Equip(EquipmentType type, EquipableItem item)
     {
         equipment.SetItem(type, item);
         equipmentDisplay.setEquipment(type, item);
+        playerStatusManager.itemStatChange(type, new StatStruct(item.stats));
     }
     public void Unequip(EquipmentType type)
     {
         equipment.SetItem(type, null);
         equipmentDisplay.Clear(type);
+        playerStatusManager.itemStatRemove(type);
     }
 }

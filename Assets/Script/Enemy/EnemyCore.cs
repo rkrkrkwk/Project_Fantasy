@@ -23,5 +23,6 @@ public class EnemyCore : MonoBehaviour
                 droppedItemScript.init(item.id, 1);
             }
         }
+        
     }
 }

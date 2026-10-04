@@ -17,7 +17,7 @@ public class StatStruct
         foreach (StatType statType in Enum.GetValues(typeof(StatType)))
         {
             statList.Add(new stat());
-            statDict.Add(statType, new stat());
+            statDict.Add(statType, statList[(int)statType]);
         }
     }
     public StatStruct(float[] floats)
@@ -25,15 +25,23 @@ public class StatStruct
         foreach (StatType statType in Enum.GetValues(typeof(StatType)))
         {
             statList.Add(new stat(floats[(int)statType]));
-            statDict.Add(statType, new stat(floats[(int)statType]));
+            statDict.Add(statType, statList[(int)statType]);
+        }
+    }
+    public StatStruct(float[] floats, float[] items)
+    {
+        foreach (StatType statType in Enum.GetValues(typeof(StatType)))
+        {
+            statList.Add(new stat(floats[(int)statType], items[(int)statType]));
+            statDict.Add(statType, statList[(int)statType]);
         }
     }
     public StatStruct(stat[] statArray)
     {
         foreach (StatType statType in Enum.GetValues(typeof(StatType)))
         {
-            statList.Add(new stat(statArray[(int)statType].getBasic()));
-            statDict.Add(statType, new stat(statArray[(int)statType].getBasic()));
+            statList.Add(new stat(statArray[(int)statType].getBasic(), statArray[(int)statType].getItem()));
+            statDict.Add(statType, statList[(int)statType]);
         }
     }
 
@@ -74,6 +82,6 @@ public class StatStruct
     }
     public float getStat(StatType statType)
     {
-        return statDict[statType].getBasic();
+        return statDict[statType].getFinal();
     }
 }

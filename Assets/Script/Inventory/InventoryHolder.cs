@@ -5,6 +5,7 @@ using TMPro;
 
 public class InventoryHolder : MonoBehaviour, IPointerClickHandler
 {
+    private int id;
     private int index;
     [SerializeField] private UnityEngine.UI.Image iconImage;
     [SerializeField] private TextMeshProUGUI quantityText;
@@ -16,6 +17,7 @@ public class InventoryHolder : MonoBehaviour, IPointerClickHandler
 
     public void ShowItem(int id, int quantity)
     {
+        this.id = id;
         if (id == -1)
         {
             iconImage.sprite = null;
@@ -35,12 +37,26 @@ public class InventoryHolder : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log($"InventoryHolder: Clicked on index {index}");
-        if(iconImage.sprite == null)
+        switch (ItemList.Instance.GetItem(id).itemType)
         {
-            Debug.Log("InventoryHolder: No item to select");
-            return;
+            case ItemType.Equipable:
+                {
+                    if(iconImage.sprite == null)
+                    {
+                        Debug.Log("InventoryHolder: No item to select");
+                        return;
+                    }
+                    InventoryEquipmentManager.Instance.SetIndex(index);
+                }
+                break;
+            case ItemType.Usable:
+                {
+                    ItemUseManager.instance.UseItem((UsableItem)ItemList.Instance.GetItem(id));
+                }
+                break;
+            default:
+                break;
+            
         }
-        InventoryEquipmentManager.Instance.SetIndex(index);
     }
 }

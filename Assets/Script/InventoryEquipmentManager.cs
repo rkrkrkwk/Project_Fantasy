@@ -31,7 +31,7 @@ public class InventoryEquipmentManager : MonoBehaviour
     public void DoEquip(EquipmentType type)
     {
         int itemID = inventory.InventoryItems[selectedIndex].itemID;
-        equipmentManager.Equip(type, ItemList.Instance.GetItem(itemID));
+        equipmentManager.Equip(type, (EquipableItem)ItemList.Instance.GetItem(itemID));
         inventory.RemoveItem(itemID, 1);
         inventoryDisplay.Refresh();
     }

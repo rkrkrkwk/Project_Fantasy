@@ -24,3 +24,4 @@ MonoBehaviour:
     probability: 0.1
   - id: 2
     probability: 0.5
+  exp: 1

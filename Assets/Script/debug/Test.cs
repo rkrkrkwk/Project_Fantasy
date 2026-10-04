@@ -6,13 +6,8 @@ public class Test : MonoBehaviour
 {
     [SerializeField] private Skill playerSkill;
     [SerializeField] private Inventory inventory;
-    [SerializeField] private int skillId = 1;
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha9))
-        {
-            playerSkill.AddSkill(skillId);
-        }
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
             Debug.Log("pressed 0");

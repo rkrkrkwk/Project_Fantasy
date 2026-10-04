@@ -10,4 +10,5 @@ public class EnemyData : ScriptableObject
     public float speed;
     public StatSet stat;
     public List<ItemTable> itemTables;
+    public float exp;
 }

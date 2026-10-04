@@ -4,8 +4,8 @@ public enum EquipmentType
     None = 0,
     Head = 1,
     RightHand = 2,
-    LeftHand = 4,
-    Upper = 8,
-    Lower = 16,
-    Feet = 32
+    LeftHand = 3,
+    Upper = 4,
+    Lower = 5,
+    Feet = 6
 }

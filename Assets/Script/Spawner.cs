@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField]
-    private int EID;
-    [SerializeField]
-    private float respawnTime;
+    [SerializeField] private int EID;
+    [SerializeField] private float respawnTime;
     private bool isFull = false;
-    [SerializeField]
-    private int maxEnemies;
+    [SerializeField] private int maxEnemies;
     private Coroutine coroutine;
     public int getEID() { return EID; }
     private void Update()

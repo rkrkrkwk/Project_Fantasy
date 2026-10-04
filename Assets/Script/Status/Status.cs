@@ -82,7 +82,7 @@ public class Status : MonoBehaviour
         {
             if (item != null)
             {
-                stat += item.stat;
+                //stat += item.stat;
                 //Debug.Log("Item " + item.itemName + "status" + stat.MaxHP.modifier + "," + stat.MaxMP.modifier + "," + stat.ATK.modifier + "," + stat.DEF.modifier +  " has been acquired");
             }
         }
