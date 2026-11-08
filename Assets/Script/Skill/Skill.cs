@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Skill : MonoBehaviour
 {
+    private List<int> equipmentSkillList = new List<int>();
+    public List<int> GetEquipmentSkillList() => equipmentSkillList;
     private List<int> skillList = new List<int>();
     public List<int> SkillList { get => skillList; }
     public void AddSkill(int id)
@@ -24,6 +26,28 @@ public class Skill : MonoBehaviour
             Debug.Log("Skill not found");
         }
     }
+    public void AddEquipmentSkill(List<int> idList)
+    {
+        foreach (int id in idList)
+        {
+            if (SkillDatabase.Instance.SkillLookupTable.ContainsKey(id))
+            {
+                if (!skillList.Exists(x => x == id))
+                {
+                    Debug.Log("Equipment Skill added");
+                    skillList.Add(id);
+                }
+                else
+                {
+                    Debug.Log("Equipment Skill already exists");
+                }
+            }
+            else
+            {
+                Debug.Log("Equipment Skill not found");
+            }
+        }
+    }
     public void removeSkill(int id)
     {
         if (skillList.Exists(x => x == id))
@@ -33,6 +57,20 @@ public class Skill : MonoBehaviour
         else
         {
             Debug.Log("Skill not found");
+        }
+    }
+    public void removeEquipmentSkill(List<int> idList)
+    {
+        foreach (int id in idList)
+        {
+            if (skillList.Exists(x => x == id))
+            {
+                skillList.Remove(id);
+            }
+            else
+            {
+                Debug.Log("Equipment Skill not found");
+            }
         }
     }
 }

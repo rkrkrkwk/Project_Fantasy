@@ -24,6 +24,10 @@ public class InventoryEquipmentManager : MonoBehaviour
     {
         selectedIndex = index;
     }
+    public void ResetIndex()
+    {
+        selectedIndex = -1;
+    }
     public int getIndex()
     {
         return selectedIndex;
@@ -34,11 +38,16 @@ public class InventoryEquipmentManager : MonoBehaviour
         equipmentManager.Equip(type, (EquipableItem)ItemList.Instance.GetItem(itemID));
         inventory.RemoveItem(itemID, 1);
         inventoryDisplay.Refresh();
+        EquipmentSkillManager.instance.SettingSkill();
     }
     public void DoUnequip(EquipmentType type, int itemID)
     {
         equipmentManager.Unequip(type);
-        inventory.AddItem(ItemList.Instance.GetItem(itemID).id, 1);
+        if(itemID != 4)
+        {
+            inventory.AddItem(ItemList.Instance.GetItem(itemID).id, 1);
+        }
         inventoryDisplay.Refresh();
+        EquipmentSkillManager.instance.SettingSkill();
     }
 }

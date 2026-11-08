@@ -104,7 +104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c16a865f9edf1c74482e78568e6ae25d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawner: {fileID: 0}
 --- !u!212 &9033187649168678934
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -255,6 +254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1805b77e08e655043a1d005bf494ce09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EntityBase: {fileID: 1732372835519086779, guid: dfa31f9f0cea19343ab3ec910fad43f0, type: 3}
   EID: 0
   respawnTime: 0
   maxEnemies: 0

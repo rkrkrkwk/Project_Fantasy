@@ -17,8 +17,9 @@ MonoBehaviour:
   flavorText: "\uC8FC\uBA39\uC744 \uBED7\uC5B4 \uACF5\uACA9\uD558\uB294 \uAE30\uC220."
   icon: {fileID: -1072143615, guid: ca22d49cf4f37fe47a130a684391c6ea, type: 3}
   prefab: {fileID: 5431912579410692219, guid: 68f1d0f91fe73b64e8bb2e290f882c8f, type: 3}
+  type: 0
+  objectLimit: 2
   baseDamage: 1
-  weightPairs: []
   speed: 10
   range: 1
   pierce: 1

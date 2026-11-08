@@ -8,7 +8,7 @@ public class Equipment : MonoBehaviour
     public List<int> GetEquipmentList() => EquipmentList;
     private Dictionary<EquipmentType, Item> items = new Dictionary<EquipmentType, Item>();
     public IReadOnlyDictionary<EquipmentType, Item> Items => items;
-    void Awake()
+    private void Awake()
     {
         foreach (EquipmentType type in Enum.GetValues(typeof(EquipmentType)))
         {
@@ -18,8 +18,16 @@ public class Equipment : MonoBehaviour
     }
     public void SetItem(EquipmentType part, Item item)
     {
-        EquipmentList[(int)part] = item.id;
-        items[part] = item;
+        if(item != null)
+        {
+            EquipmentList[(int)part] = item.id;
+            items[part] = item;
+        }
+        else
+        {
+            EquipmentList[(int)part] = 0;
+            items[part] = null;
+        }
     }
     public Item GetItem(EquipmentType part)
     {

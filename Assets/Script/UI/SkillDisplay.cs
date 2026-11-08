@@ -13,7 +13,6 @@ public class SkillDisplay : MonoBehaviour
     private GameObject content;
     [SerializeField]
     private SkillSettingDisplay skillSettingDisplay;
-    List<int> skillList = new List<int>();
     private void OnEnable()
     {
         Debug.Log("DisplaySkill Activate");
@@ -23,9 +22,16 @@ public class SkillDisplay : MonoBehaviour
     public void DisplaySkill()
     {
         Debug.Log("DisplaySkill On");
-        skillList = skill.SkillList;
+        List<int> skillList = skill.SkillList;
+        List<int> equipmentSkillList = skill.GetEquipmentSkillList();
         foreach (Transform child in content.transform){
             Destroy(child.gameObject);
+        }
+        foreach (int skillId in equipmentSkillList)
+        {
+            SkillContainer g = Instantiate(skillContainer, content.transform);
+            g.SetSkill(skillId);
+            g.DisplaySkill();
         }
         foreach (int skillId in skillList)
         {

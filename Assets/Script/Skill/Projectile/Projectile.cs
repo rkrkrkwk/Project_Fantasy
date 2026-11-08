@@ -18,7 +18,7 @@ public class Projectile : MonoBehaviour
     {
         if (skill == null) return;
         transform.position += transform.up * skill.speed * Time.deltaTime;
-        if (Vector3.Distance(startPos, transform.position) > skill.range) Destroy(gameObject);
+        if (Vector3.Distance(startPos, transform.position) > skill.range) RemoveSkill();
     }
     public void SetSkill(SkillData skillData, string targetTag, GameObject owner)
     {
@@ -37,8 +37,13 @@ public class Projectile : MonoBehaviour
             pierceCount += 1;
             if (pierceCount >= skill.pierce)
             {
-                Destroy(gameObject);
+                RemoveSkill();
             }
         }
+    }
+    public void RemoveSkill()
+    {
+        ObjectLimitManager.instance.ObjectRelease(skill.skillId);
+        Destroy(gameObject);
     }
 }

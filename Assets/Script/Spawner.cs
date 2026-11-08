@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    [SerializeField] private GameObject EntityBase;
     [SerializeField] private int EID;
     [SerializeField] private float respawnTime;
     private bool isFull = false;
@@ -23,7 +24,8 @@ public class Spawner : MonoBehaviour
     }
     public IEnumerator spawnEnemyDelay()
     {
-        Instantiate(EnemyDatabase.instance.EnemyLookup[EID].prefab, new Vector3(transform.position.x + Random.value * transform.localScale.x, transform.position.y + Random.value * transform.localScale.y, 1), transform.rotation);
+        GameObject temp = Instantiate(EntityBase, new Vector3(transform.position.x + Random.value * transform.localScale.x, transform.position.y + Random.value * transform.localScale.y, 1), transform.rotation);
+        temp.GetComponent<EntityCore>().init(EID);
         yield return new WaitForSeconds(respawnTime);
         coroutine = null;
     }

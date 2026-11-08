@@ -13,10 +13,16 @@ MonoBehaviour:
   m_Name: slash
   m_EditorClassIdentifier: 
   skillId: 2
-  skillName: 
-  flavorText: 
-  icon: {fileID: 0}
-  prefab: {fileID: 0}
-  startAngle: 0
-  endAngle: 0
-  movespeed: 0
+  skillName: "\uD718\uB450\uB974\uAE30"
+  flavorText: "\uD718\uB450\uB978\uB2E4."
+  icon: {fileID: 395564819, guid: ca22d49cf4f37fe47a130a684391c6ea, type: 3}
+  prefab: {fileID: 6755589446032919502, guid: d0c9f764215dab946b8bac6d07e50f89, type: 3}
+  type: 1
+  size: 1
+  startAngle: 90
+  endAngle: -90
+  movespeed: 1000
+  objectLimit: 1
+  damageMultipliers:
+  - statType: 1
+    multiplier: 1

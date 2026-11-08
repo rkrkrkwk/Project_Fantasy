@@ -10,5 +10,7 @@ public class SkillData : ScriptableObject
     public string flavorText;
     public UnityEngine.Sprite icon;
     public GameObject prefab;
+    public SkillType type;
+    public int objectLimit;
 }
 

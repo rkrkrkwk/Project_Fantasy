@@ -17,7 +17,7 @@ public class EntityMovementsManager : MonoBehaviour
     private Dictionary<EntityPattern, EntityMovement> entityMovementDictionary = new Dictionary<EntityPattern, EntityMovement>();
     private void Start()
     {
-        foreach (EntityPatternStruct pattern in entityMovements)
+        foreach (EntityPatternStruct pattern in entityMovements)    
         {
             entityMovementDictionary.Add(pattern.pattern, pattern.movement);
         }

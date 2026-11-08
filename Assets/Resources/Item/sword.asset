@@ -16,6 +16,7 @@ MonoBehaviour:
   itemName: Sword
   icon: {fileID: 395564819, guid: ca22d49cf4f37fe47a130a684391c6ea, type: 3}
   flavorText: "\uAC80\uC774\uB2E4."
+  itemType: 0
   stats:
   - basic: 0
     item: 0
@@ -26,3 +27,4 @@ MonoBehaviour:
   - basic: 0
     item: 0
     final: 0
+  skills: 02000000

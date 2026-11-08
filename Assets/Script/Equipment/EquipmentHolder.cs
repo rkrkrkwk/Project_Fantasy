@@ -40,6 +40,7 @@ public class EquipmentHolder : MonoBehaviour, IPointerClickHandler
             }
             InventoryEquipmentManager.Instance.DoEquip(equipmentType);
             Debug.Log($"Equipped item {item.name} to {equipmentType}");
+            InventoryEquipmentManager.Instance.ResetIndex();
         }
         else if(eventData.button == PointerEventData.InputButton.Right)
         {

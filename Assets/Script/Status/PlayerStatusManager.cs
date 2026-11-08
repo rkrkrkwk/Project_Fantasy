@@ -85,4 +85,9 @@ public class PlayerStatusManager : MonoBehaviour
             HP = playerStats.StatDict[StatType.MaxHP].getFinal();
         }
     }
+    public void getExp(float exp)
+    {
+        this.exp += exp;
+        Debug.Log("Exp: " + exp);
+    }
 }

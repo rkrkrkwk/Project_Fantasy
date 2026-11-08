@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21b22b8e8a4feb041b1b0f0bf63eec07, type: 3}
+  m_Name: EntityData
+  m_EditorClassIdentifier: 
+  ID: 0
+  speed: 0
+  stat:
+    maxHP: 0
+    ATK: 0
+    DEF: 0
+  itemTables: []
+  exp: 0

@@ -13,16 +13,16 @@ public class SpawnZone : MonoBehaviour
     }
     private void Start()
     {
-        enemyId = EnemyDatabase.instance.EnemyLookup[spawner.getEID()].ID;
+        enemyId = EntityDatabase.instance.EntityList[spawner.getEID()].ID;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy" && collision.gameObject.GetComponent<EnemyCore>().getId() == enemyId) enemies++;
+        if (collision.gameObject.tag == "Enemy" && collision.gameObject.GetComponent<EntityCore>().getId() == enemyId) enemies++;
         if (enemies >= spawner.getMaxEnemies()) spawner.setFull();
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy" && collision.gameObject.GetComponent<EnemyCore>().getId() == enemyId) enemies--;
+        if (collision.gameObject.tag == "Enemy" && collision.gameObject.GetComponent<EntityCore>().getId() == enemyId) enemies--;
         if (enemies < spawner.getMaxEnemies()) spawner.setNotFull();
     }
 }

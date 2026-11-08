@@ -8,6 +8,10 @@ public class Test : MonoBehaviour
     [SerializeField] private Inventory inventory;
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            playerSkill.AddSkill(1);
+        }
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
             Debug.Log("pressed 0");

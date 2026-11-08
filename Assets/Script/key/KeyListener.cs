@@ -25,7 +25,7 @@ public class KeyListener : MonoBehaviour
                 if (Input.GetKeyDown(KeySetting[key.Key]))
                 {
                     Debug.Log("Key " + key.Key + " has been pressed");
-                    SkillExecuteManger.Instance.ExecuteSkill(SkillSettingManager.Instance.getSkill((int)key.Key), "Enemy", player);
+                    SkillExecuteManger.instance.ExecuteSkill(SkillSettingManager.Instance.getSkill((int)key.Key), "Enemy", player);
                 }
             }
         }

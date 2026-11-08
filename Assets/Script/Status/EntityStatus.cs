@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class EntityStatus : MonoBehaviour
 {
-    private EnemyCore core;
+    private EntityCore core;
     private StatStruct stat;
     private float hp;
     private void Start()
     {
-        core = GetComponent<EnemyCore>();
+        core = GetComponent<EntityCore>();
         stat = new StatStruct(new float[] {core.getStatus().maxHP, core.getStatus().ATK, core.getStatus().DEF});
         hp = core.getStatus().maxHP;
         Debug.Log(gameObject.GetInstanceID() + " HP : " + hp);

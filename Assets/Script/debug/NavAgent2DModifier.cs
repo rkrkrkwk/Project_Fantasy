@@ -6,11 +6,11 @@ using UnityEngine.AI;
 public class NavAgent2DModifier : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent _agent;
-    [SerializeField] private EnemyCore _enemyCore;
-    void Awake()
+    [SerializeField] private EntityCore _entityCore;
+    public void init()
     {
         _agent.updateRotation = false;
         _agent.updateUpAxis = false;
-        _agent.speed = _enemyCore.getSpeed();
+        _agent.speed = _entityCore.getSpeed();
     }
 }
